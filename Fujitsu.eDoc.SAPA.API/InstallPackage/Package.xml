@@ -1,0 +1,18 @@
+<Package Name="SAPA API" Version="#{PackageVersion}#" InstallPath="[PROGRAMFILES]\Fujitsu\eDoc\_Instances\[INSTANCENAME]\SAPA API">
+  <Features>
+    <Feature Name="ProcessEngineWorkUnits" InstallOnServers="SAPAAPI">
+      <Components>
+        <CopyFolder FolderName="[SOURCEFOLDER]\_PublishedWebsites\Fujitsu.eDoc.SAPA.WebService\" Destination="[PROGRAMFILES]\Fujitsu\eDoc\_Instances\[INSTANCENAME]\SAPA API\" />
+        <XMLFile Filename="[INSTALL PATH]\web.config">
+          <SetXMLAttributes>
+            <XMLAttribute XPath="configuration/appSettings/add[@key='Fujitsu.eDoc.SAPA.JournalNote.FilePath']" Name="value" Value="[SETTING:SAPAAPI.LocalPath]\[INSTANCENAME]\JournalNoteFolder" When="OnInstall" />
+            <XMLAttribute XPath="configuration/appSettings/add[@key='Fujitsu.eDoc.SAPA.MessageDistribution.FilePath']" Name="value" Value="[SETTING:SAPAAPI.LocalPath]\[INSTANCENAME]\MessageDistributionFolder" When="OnInstall" />
+          </SetXMLAttributes>
+        </XMLFile>
+        <AppPool Name="Fujitsu eDoc SAPA API [INSTANCENAME]" ManagedRuntimeVersion="v4.0" ManagedPipeLineMode="Integrated" UserName="[INSTANCENAME SERVICE ACCOUNT]" Password="[INSTANCENAME SERVICE ACCOUNT PASSWORD]" RecycleSchedule="04:00" />
+        <WebSite Name="Fujitsu eDoc" Path="[WWW ROOT]" Port="443" AppPoolName="DefaultAppPool" Authentication="Windows" />
+        <WebApplicaton Name="SAPAAPI-[INSTANCENAME]" Path="[PROGRAMFILES]\Fujitsu\eDoc\_Instances\[INSTANCENAME]\SAPA API\" WebSite="Fujitsu eDoc"  AppPoolName="Fujitsu eDoc SAPA API [INSTANCENAME]" Authentication="Anonymous" />
+      </Components>
+    </Feature>
+  </Features>
+</Package>

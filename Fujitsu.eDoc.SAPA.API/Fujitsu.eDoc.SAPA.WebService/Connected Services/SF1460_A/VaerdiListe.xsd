@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:sts="urn:oio:sts:2.0.0" xmlns:sd="urn:oio:sagdok:3.0.0" xmlns:tns="urn:oio:sts:beskedfordeler:vaerdiliste:1.0.0" xmlns:oio="urn:oio:definitions:1.0.0" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="urn:oio:sts:beskedfordeler:vaerdiliste:1.0.0" oio:mapping="urn:oio:sagdok:MPD:3.0.0" xmlns="http://www.w3.org/2001/XMLSchema">
+  <import schemaLocation="SagDokObjekt.xsd" namespace="urn:oio:sagdok:3.0.0" />
+  <element oio:definition="urn:oio:sagdok:tns:ADD:2.0.0" name="Vaerdiliste" type="tns:VaerdilisteType" />
+  <complexType oio:definition="urn:oio:sagdok:tns:ADD:2.0.0" name="VaerdilisteType">
+    <complexContent mixed="false">
+      <extension base="sd:SagDokObjektType">
+        <sequence>
+          <element oio:content="registreringer" maxOccurs="unbounded" ref="tns:Registrering" />
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <element oio:definition="urn:oio:sagdok:adresseattributliste:ADD:2.0.0" name="AttributListe" type="tns:AttributListeType" />
+  <complexType oio:definition="urn:oio:sagdok:adresseattributliste:ADD:2.0.0" name="AttributListeType">
+    <sequence>
+      <element oio:content="egenskaber" minOccurs="0" maxOccurs="unbounded" ref="tns:Egenskab" />
+      <element oio:content="lokaludvidelse" minOccurs="0" ref="sd:LokalUdvidelse" />
+    </sequence>
+  </complexType>
+  <element oio:definition="urn:oio:sagdok:adressetilstandliste:ADD:2.0.0" name="TilstandListe" type="tns:TilstandListeType" />
+  <complexType oio:definition="urn:oio:sagdok:adressetilstandliste:ADD:2.0.0" name="TilstandListeType">
+    <sequence>
+      <element oio:content="lokaludvidelse" minOccurs="0" ref="sd:LokalUdvidelse" />
+    </sequence>
+  </complexType>
+  <element oio:definition="urn:oio:sagdok:adresserelationliste:ADD:2.0.0" name="RelationListe" type="tns:RelationListeType" />
+  <complexType oio:definition="urn:oio:sagdok:adresserelationliste:ADD:2.0.0" name="RelationListeType">
+    <sequence>
+      <element oio:content="lokaludvidelse" minOccurs="0" ref="sd:LokalUdvidelse" />
+    </sequence>
+  </complexType>
+  <element oio:definition="urn:oio:sagdok:adresseregistrering:ADD:2.0.0" name="Registrering" type="tns:RegistreringType" />
+  <complexType oio:definition="urn:oio:sagdok:adresseregistrering:ADD:2.0.0" name="RegistreringType">
+    <complexContent mixed="false">
+      <extension base="sd:RegistreringType">
+        <sequence>
+          <element oio:content="attributter" ref="tns:AttributListe" />
+          <element oio:content="tilstande" ref="tns:TilstandListe" />
+          <element oio:content="relationer" ref="tns:RelationListe" />
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <element oio:definition="urn:oio:sagdok:adresseegenskaber:ADD:1.0.0" name="Egenskab" type="tns:EgenskabType" />
+  <complexType oio:definition="urn:oio:sagdok:adresseegenskaber:ADD:1.0.0" name="EgenskabType">
+    <sequence>
+      <element oio:content="brugervendtnoegle" minOccurs="0" ref="sd:BrugervendtNoegleTekst" />
+      <element oio:content="vaerdiliste" name="Vaerdiliste" type="tns:VaerdiElementType" />
+      <element oio:content="virkning" ref="sd:Virkning" />
+    </sequence>
+  </complexType>
+  <complexType name="VaerdiElementType">
+    <sequence>
+      <element name="Navn" type="string" />
+      <element minOccurs="0" maxOccurs="unbounded" name="Vaerdi" type="string" />
+    </sequence>
+  </complexType>
+</schema>

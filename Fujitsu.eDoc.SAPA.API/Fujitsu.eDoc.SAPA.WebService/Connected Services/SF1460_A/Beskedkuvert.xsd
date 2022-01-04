@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:sd="urn:oio:sagdok:3.0.0" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:oio="urn:oio:definitions:1.0.0" xmlns:sts="urn:oio:sts:1.0.0" xmlns:besked="urn:oio:besked:kuvert:1.0" xmlns:orgfaelles="urn:oio:sagdok:organisation:2.0.0" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="urn:oio:besked:kuvert:1.0" oio:mapping="urn:oio:sagdok:MPD:3.0.0" xmlns="http://www.w3.org/2001/XMLSchema">
+  <import schemaLocation="xmldsig-core-schema.xsd" namespace="http://www.w3.org/2000/09/xmldsig#" />
+  <import schemaLocation="SagDokObjekt.xsd" namespace="urn:oio:sagdok:3.0.0" />
+  <import schemaLocation="OrganisationFaelles.xsd" namespace="urn:oio:sagdok:organisation:2.0.0" />
+  <element oio:definition="urn:oio:besked:haendelsesbesked:ADD:2.0.0" name="Haendelsesbesked" type="besked:HaendelsesbeskedType" />
+  <complexType oio:definition="urn:oio:besked:Haendelsesbeskedtype:ADD:2.0.0" name="HaendelsesbeskedType">
+    <sequence>
+      <element oio:content="beskedid" minOccurs="1" maxOccurs="1" ref="besked:BeskedId" />
+      <element oio:content="beskedversion" minOccurs="1" maxOccurs="1" ref="besked:BeskedVersion" />
+      <element oio:content="beskedkuvert" minOccurs="1" maxOccurs="1" ref="besked:Beskedkuvert" />
+      <element oio:content="beskeddata" minOccurs="0" maxOccurs="unbounded" ref="besked:Beskeddata" />
+    </sequence>
+  </complexType>
+  <element oio:definition="urn:oio:sagdok:beskedid:ASDD:2.0.0" name="BeskedId" type="sd:UnikIdType" />
+  <element oio:definition="urn:oio:sagdok:beskedversion:ASDD:2.0.0" name="BeskedVersion" type="string" />
+  <element oio:definition="urn:oio:besked:beskedkuvert:ADD:2.0.0" name="Beskedkuvert" type="besked:BeskedkuvertType" />
+  <complexType oio:definition="urn:oio:besked:beskedkuverttype:ADD:2.0.0" name="BeskedkuvertType">
+    <sequence>
+      <element oio:content="filtreringsdata" minOccurs="1" maxOccurs="1" ref="besked:Filtreringsdata" />
+      <element oio:content="leveranceinformation" minOccurs="1" maxOccurs="1" ref="besked:Leveranceinformation" />
+      <element oio:content="modtagerhandling" minOccurs="0" maxOccurs="1" ref="besked:Modtagerhandling" />
+      <element oio:content="fratidspunkt" minOccurs="0" maxOccurs="1" ref="besked:GyldighedFra" />
+      <element oio:content="tiltidspunkt" minOccurs="0" maxOccurs="1" ref="besked:GyldighedTil" />
+    </sequence>
+  </complexType>
+  <element oio:definition="urn:oio:sagdok:gyldighedfra:ASDD:2.0.0" name="GyldighedFra" type="sd:TidspunktType" />
+  <element oio:definition="urn:oio:sagdok:gyldighedtil:ASDD:2.0.0" name="GyldighedTil" type="sd:TidspunktType" />
+  <element oio:definition="urn:oio:besked:beskeddata:ADD:2.0.0" name="Beskeddata" type="besked:BeskeddataType" />
+  <complexType oio:definition="urn:oio:besked:beskeddatatype:ADD:2.0.0" name="BeskeddataType">
+    <sequence>
+      <any oio:content="any" minOccurs="0" maxOccurs="unbounded" namespace="##any" processContents="skip" />
+    </sequence>
+  </complexType>
+  <element oio:definition="urn:oio:besked:leveranceinformationlokaludvidelse:ADD:2.0.0" name="LeveranceinformationLokalUdvidelse" type="besked:LeveranceinformationLokalUdvidelseType" />
+  <complexType oio:definition="urn:oio:besked:leveranceinformationlokaludvidelsetype:ADD:2.0.0" name="LeveranceinformationLokalUdvidelseType">
+    <sequence>
+      <element minOccurs="0" maxOccurs="1" ref="besked:BeskedfordelerSignatur" />
+      <any oio:content="any" minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="skip" />
+    </sequence>
+  </complexType>
+  <element oio:definition="urn:oio:besked:leverancerutelokaludvidelse:ADD:2.0.0" name="LeveranceruteLokalUdvidelse" type="besked:LeveranceruteLokalUdvidelseType" />
+  <complexType oio:definition="urn:oio:besked:leverancerutelokaludvidelsetype:ADD:2.0.0" name="LeveranceruteLokalUdvidelseType">
+    <sequence>
+      <element oio:content="leveranceforsoeg" minOccurs="0" maxOccurs="1" ref="besked:AntalLeveranceforsoeg" />
+      <any oio:content="any" minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="skip" />
+    </sequence>
+  </complexType>
+  <element oio:definition="urn:oio:besked:objektregistreringlokaludvidelse:ADD:2.0.0" name="ObjektRegistreringLokalUdvidelse" type="besked:ObjektRegistreringLokalUdvidelseType" />
+  <complexType oio:definition="urn:oio:besked:objektregistreringlokaludvidelsetype:ADD:2.0.0" name="ObjektRegistreringLokalUdvidelseType">
+    <sequence>
+      <element minOccurs="0" maxOccurs="1" ref="besked:AfsenderSystemSignatur" />
+      <any oio:content="any" minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="skip" />
+    </sequence>
+  </complexType>
+  <element oio:definition="urn:oio:besked:beskedfordelersignatur:ASDD:2.0.0" name="BeskedfordelerSignatur" type="besked:BeskedfordelerSignaturType" />
+  <complexType oio:definition="urn:oio:besked:beskedfordelersignaturtype:ADD:2.0.0" name="BeskedfordelerSignaturType">
+    <sequence>
+      <element oio:content="xmlsignatur" minOccurs="1" maxOccurs="1" ref="ds:Signature" />
+    </sequence>
+  </complexType>
+  <element oio:definition="urn:oio:besked:modtagerhandling:ADD:2.0.0" name="Modtagerhandling" type="besked:ModtagerhandlingType" />
+  <complexType oio:definition="urn:oio:besked:modtagerhandlingtype:ADD:2.0.0" name="ModtagerhandlingType">
+    <sequence>
+      <element oio:content="handling" minOccurs="0" maxOccurs="1" ref="besked:Handling" />
+      <element oio:content="responsmodtager" minOccurs="0" maxOccurs="1" ref="besked:Responsmodtager" />
+    </sequence>
+  </complexType>
+  <element oio:definition="urn:oio:sagdok:handling:ASDD:2.0.0" name="Handling" type="sd:UnikIdType" />
+  <element oio:definition="urn:oio:sagdok:responsmodtager:ASDD:2.0.0" name="Responsmodtager" type="orgfaelles:AktoerType" />
+  <element oio:definition="urn:oio:besked:filtreringsdata:ADD:2.0.0" name="Filtreringsdata" type="besked:FiltreringsdataType" />
+  <complexType oio:definition="urn:oio:besked:filtreringsdatatype:ADD:2.0.0" name="FiltreringsdataType">
+    <sequence>
+      <element oio:content="beskedtype" minOccurs="1" maxOccurs="1" ref="besked:Beskedtype" />
+      <element oio:content="beskedansvarlig" minOccurs="0" maxOccurs="1" ref="besked:BeskedAnsvarligAktoer" />
+      <element oio:content="tilladtmodtager" minOccurs="0" maxOccurs="unbounded" ref="besked:TilladtModtager" />
+      <element oio:content="relateretobjekt" minOccurs="0" maxOccurs="unbounded" ref="besked:RelateretObjekt" />
+      <element oio:content="objektregistrering" minOccurs="0" maxOccurs="unbounded" ref="besked:ObjektRegistrering" />
+      <element oio:content="procesid" minOccurs="0" maxOccurs="unbounded" ref="besked:TvaergaaendeProces" />
+    </sequence>
+  </complexType>
+  <element oio:definition="urn:oio:sagdok:beskedtype:ASDD:2.0.0" name="Beskedtype" type="sd:UnikIdType" />
+  <element oio:definition="urn:oio:sagdok:beskedansvarlig:ASDD:2.0.0" name="BeskedAnsvarligAktoer" type="orgfaelles:AktoerType" />
+  <element oio:definition="urn:oio:sagdok:tilladtmodtager:ASDD:2.0.0" name="TilladtModtager" type="sd:UnikIdType" />
+  <element oio:definition="urn:oio:sagdok:tvaergaandeproces:ASDD:2.0.0" name="TvaergaaendeProces" type="sd:UnikIdType" />
+  <element oio:definition="urn:oio:besked:relateretobjekt:ADD:2.0.0" name="RelateretObjekt" type="besked:RelateretObjektType" />
+  <complexType oio:definition="urn:oio:besked:relateretobjekttype:ADD:2.0.0" name="RelateretObjektType">
+    <sequence>
+      <element oio:content="objektid" minOccurs="1" maxOccurs="1" ref="besked:ObjektId" />
+      <element oio:content="objekttype" minOccurs="1" maxOccurs="1" ref="besked:ObjektType" />
+      <element oio:content="objektrolle" minOccurs="0" maxOccurs="1" ref="besked:ObjektRolle" />
+    </sequence>
+  </complexType>
+  <element oio:definition="urn:oio:sagdok:objektid:ASDD:2.0.0" name="ObjektId" type="sd:UnikIdType" />
+  <element oio:definition="urn:oio:sagdok:objekttype:ASDD:2.0.0" name="ObjektType" type="sd:UnikIdType" />
+  <element oio:definition="urn:oio:sagdok:objektrolle::ADD:2.0.0" name="ObjektRolle" type="sd:UnikIdType" />
+  <element oio:definition="urn:oio:besked:leveranceinformation:ADD:2.0.0" name="Leveranceinformation" type="besked:LeveranceinformationType" />
+  <complexType oio:definition="urn:oio:besked:leveranceinformationtype:ADD:2.0.0" name="LeveranceinformationType">
+    <sequence>
+      <element oio:content="dannelsestidspunkt" minOccurs="0" maxOccurs="1" ref="besked:Dannelsestidspunkt" />
+      <element oio:content="transaktionsid" minOccurs="0" maxOccurs="1" ref="besked:TransaktionsId" />
+      <element oio:content="kildesystem" minOccurs="0" maxOccurs="1" ref="besked:Kildesystem" />
+      <element oio:content="kildesystemipadresse" minOccurs="0" maxOccurs="1" ref="besked:KildesystemIPAdresse" />
+      <element oio:content="kildesystemakkreditiver" minOccurs="0" maxOccurs="1" ref="besked:KildesystemAkkreditiver" />
+      <element oio:content="sikkerhedsklassificering" minOccurs="0" maxOccurs="1" ref="besked:Sikkerhedsklassificering" />
+      <element oio:content="leverancerute" minOccurs="0" maxOccurs="1" ref="besked:Leveranceruter" />
+      <element oio:content="lokaludvidelse" minOccurs="0" maxOccurs="1" ref="besked:LeveranceinformationLokalUdvidelse" />
+    </sequence>
+  </complexType>
+  <element oio:definition="urn:oio:sagdok:dannelsestidspunkt:ASDD:2.0.0" name="Dannelsestidspunkt" type="sd:TidspunktType" />
+  <element oio:definition="urn:oio:sagdok:transaktionsid:ASDD:2.0.0" name="TransaktionsId" type="sd:UnikIdType" />
+  <element oio:definition="urn:oio:sagdok:kildesystem:ASDD:2.0.0" name="Kildesystem" type="orgfaelles:AktoerType" />
+  <element oio:definition="urn:oio:sagdok:kildesystemipadresse:ASDD:2.0.0" name="KildesystemIPAdresse" type="string" />
+  <element oio:definition="urn:oio:sagdok:kildesystemakkreditiver:ASDD:2.0.0" name="KildesystemAkkreditiver" type="string" />
+  <element oio:definition="urn:oio:sagdok:sikkerhedsklassificering:ASDD:2.0.0" name="Sikkerhedsklassificering" type="sd:UnikIdType" />
+  <element oio:definition="urn:oio:besked:leveranceruter:ADD:2.0.0" name="Leveranceruter" type="besked:LeveranceruterType" />
+  <complexType oio:definition="urn:oio:besked:leverancerutertype:ADD:2.0.0" name="LeveranceruterType">
+    <sequence>
+      <element oio:content="leverancerute" minOccurs="0" maxOccurs="unbounded" ref="besked:Leverancerute" />
+    </sequence>
+  </complexType>
+  <element oio:definition="urn:oio:besked:leverancerute:ADD:2.0.0" name="Leverancerute" type="besked:LeveranceruteType" />
+  <complexType oio:definition="urn:oio:besked:leverancerutetype:ADD:2.0.0" name="LeveranceruteType">
+    <sequence>
+      <element oio:content="fordelingssystem" minOccurs="0" maxOccurs="1" ref="besked:Fordelingssystem" />
+      <element oio:content="modtagelsestidspunkt" minOccurs="0" maxOccurs="1" ref="besked:ModtagelsesTidspunkt" />
+      <element oio:content="leverancetidspunkt" minOccurs="0" maxOccurs="1" ref="besked:LeveranceTidspunkt" />
+      <element oio:content="modtagetfrasystem" minOccurs="0" maxOccurs="1" ref="besked:ModtagetFraSystem" />
+      <element oio:content="erleveretihenholdtil" minOccurs="0" maxOccurs="1" ref="besked:ErLeveretIHenholdTil" />
+      <element oio:content="lokaludvidelse" minOccurs="0" maxOccurs="1" ref="besked:LeveranceruteLokalUdvidelse" />
+    </sequence>
+  </complexType>
+  <element oio:definition="urn:oio:sagdok:fordelingssystem:ASDD:2.0.0" name="Fordelingssystem" type="sd:UnikIdType" />
+  <element oio:definition="urn:oio:sagdok:modtagelsestidspunkt:ASDD:2.0.0" name="ModtagelsesTidspunkt" type="sd:TidspunktType" />
+  <element oio:definition="urn:oio:sagdok:leverancetidspunkt:ASDD:2.0.0" name="LeveranceTidspunkt" type="sd:TidspunktType" />
+  <element oio:definition="urn:oio:sagdok:modtagetfrasystem:ASDD:2.0.0" name="ModtagetFraSystem" type="orgfaelles:AktoerType" />
+  <element oio:definition="urn:oio:sagdok:erleveretihenholdtil:ASDD:2.0.0" name="ErLeveretIHenholdTil" type="sd:UnikIdType" />
+  <element oio:definition="urn:oio:sagdok:leveranceforsoeg:ASDD:2.0.0" name="AntalLeveranceforsoeg" type="integer" />
+  <element oio:definition="urn:oio:besked:objektregistrering:ADD:2.0.0" name="ObjektRegistrering" type="besked:ObjektRegistreringType" />
+  <complexType oio:definition="urn:oio:besked:objektregistreringtype:ADD:2.0.0" name="ObjektRegistreringType">
+    <sequence>
+      <element oio:content="objektregistreringid" minOccurs="0" maxOccurs="1" ref="besked:ObjektRegistreringId" />
+      <element oio:content="registreringsaktoer" minOccurs="0" maxOccurs="1" ref="besked:RegistreringsAktoer" />
+      <element oio:content="registreringstidspunkt" minOccurs="0" maxOccurs="1" ref="besked:Registreringstidspunkt" />
+      <element oio:content="objektansvarligmyndighed" minOccurs="0" maxOccurs="1" ref="besked:ObjektAnsvarligMyndighed" />
+      <element oio:content="objektid" minOccurs="0" maxOccurs="1" ref="besked:ObjektId" />
+      <element oio:content="objekttype" minOccurs="0" maxOccurs="1" ref="besked:ObjektType" />
+      <element oio:content="objekthandling" minOccurs="0" maxOccurs="1" ref="besked:ObjektHandling" />
+      <element oio:content="opgaveemne" minOccurs="0" maxOccurs="1" ref="besked:OpgaveEmne" />
+      <element oio:content="lokaludvidelse" minOccurs="0" maxOccurs="1" ref="besked:ObjektRegistreringLokalUdvidelse" />
+    </sequence>
+  </complexType>
+  <element oio:definition="urn:oio:besked:afsendersystemsignatur:ASDD:2.0.0" name="AfsenderSystemSignatur" type="besked:AfsenderSystemSignaturType" />
+  <complexType oio:definition="urn:oio:besked:afsendersystemsignaturtype:ADD:2.0.0" name="AfsenderSystemSignaturType">
+    <sequence>
+      <element oio:content="xmlsignatur" minOccurs="1" maxOccurs="1" ref="ds:Signature" />
+    </sequence>
+  </complexType>
+  <element oio:definition="urn:oio:sagdok:objektregistreringid:ASDD:2.0.0" name="ObjektRegistreringId" type="sd:UnikIdType" />
+  <element oio:definition="urn:oio:sagdok:registreringsaktoer:ASDD:2.0.0" name="RegistreringsAktoer" type="orgfaelles:AktoerType" />
+  <element oio:definition="urn:oio:sagdok:registreringstidspunkt:ASDD:2.0.0" name="Registreringstidspunkt" type="sd:TidspunktType" />
+  <element oio:definition="urn:oio:sagdok:objektansvarligmyndighed:ASDD:2.0.0" name="ObjektAnsvarligMyndighed" type="sd:UnikIdType" />
+  <element oio:definition="urn:oio:sagdok:objekthandling:ASDD:2.0.0" name="ObjektHandling" type="sd:UnikIdType" />
+  <element oio:definition="urn:oio:sagdok:opgaveemne:ASDD:2.0.0" name="OpgaveEmne" type="sd:UnikIdType" />
+</schema>

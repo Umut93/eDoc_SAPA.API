@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="27ce01a9-1588-4186-ad40-41cbde9b3f9c" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="C:\Users\denumk\Desktop\BF - 5.9\wsdl\Beskedfordeler.wsdl" Protocol="file" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="BeskedfordelerService.wsdl" MetadataType="Wsdl" ID="30d5f58f-e071-4d90-81bf-078b4e862440" SourceId="1" SourceUrl="file:///C:/Users/denumk/Desktop/BF - 5.9/wsdl/Beskedfordeler.wsdl" />
+    <MetadataFile FileName="Part.xsd" MetadataType="Schema" ID="35be1d03-2f76-4458-88ed-56f1487488d6" SourceId="1" SourceUrl="file:///C:/Users/denumk/Desktop/BF - 5.9/wsdl/Part.xsd" />
+    <MetadataFile FileName="VaerdilisteOperationer.xsd" MetadataType="Schema" ID="1fafc64b-7e4c-43ed-9cdc-b61ce4bd6e93" SourceId="1" SourceUrl="file:///C:/Users/denumk/Desktop/BF - 5.9/wsdl/VaerdilisteOperationer.xsd" />
+    <MetadataFile FileName="VaerdiListe.xsd" MetadataType="Schema" ID="13ad0d93-23c1-4a06-bcbf-91f3a5da0f19" SourceId="1" SourceUrl="file:///C:/Users/denumk/Desktop/BF - 5.9/wsdl/VaerdiListe.xsd" />
+    <MetadataFile FileName="Beskedkuvert.xsd" MetadataType="Schema" ID="72211e0d-18e6-4ad7-b195-d37f0ec07426" SourceId="1" SourceUrl="file:///C:/Users/denumk/Desktop/BF - 5.9/wsdl/Beskedkuvert.xsd" />
+    <MetadataFile FileName="xmldsig-core-schema.xsd" MetadataType="Schema" ID="4c27145c-415a-4b7f-a9e0-d576486c0b74" SourceId="1" SourceUrl="file:///C:/Users/denumk/Desktop/BF - 5.9/wsdl/xmldsig-core-schema.xsd" />
+    <MetadataFile FileName="BeskedfordelerOperationer.xsd" MetadataType="Schema" ID="5cc32288-2780-4c90-aece-43cb9b281c59" SourceId="1" SourceUrl="file:///C:/Users/denumk/Desktop/BF - 5.9/wsdl/BeskedfordelerOperationer.xsd" />
+    <MetadataFile FileName="SagDokObjekt.xsd" MetadataType="Schema" ID="fb6e0a44-842a-4fae-a224-dc2bee19e926" SourceId="1" SourceUrl="file:///C:/Users/denumk/Desktop/BF - 5.9/wsdl/SagDokObjekt.xsd" />
+    <MetadataFile FileName="OrganisationFaelles.xsd" MetadataType="Schema" ID="0bb17284-c8e5-473f-b4c8-99f0b1f0660b" SourceId="1" SourceUrl="file:///C:/Users/denumk/Desktop/BF - 5.9/wsdl/OrganisationFaelles.xsd" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:sd="urn:oio:sagdok:3.0.0" xmlns:tns="urn:oio:sts:beskedfordeler:1.0.0" xmlns:oio="urn:oio:definitions:1.0.0" xmlns:besked="urn:oio:besked:kuvert:1.0" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="urn:oio:sts:beskedfordeler:1.0.0" oio:mapping="urn:oio:sagdok:MPD:3.0.0" xmlns="http://www.w3.org/2001/XMLSchema">
+  <import schemaLocation="SagDokObjekt.xsd" namespace="urn:oio:sagdok:3.0.0" />
+  <import schemaLocation="Beskedkuvert.xsd" namespace="urn:oio:besked:kuvert:1.0" />
+  <element oio:definition="urn:oio:sts:afsendbeskedinput:ADD:2.0.0" name="AfsendBeskedInput" type="tns:AfsendBeskedInputType" />
+  <complexType oio:definition="urn:oio:sts:afsendbeskedinputtype:ADD:2.0.0" name="AfsendBeskedInputType">
+    <sequence>
+      <element ref="besked:Haendelsesbesked" />
+    </sequence>
+  </complexType>
+  <element oio:definition="urn:oio:sts:afsendbeskedoutput:ADD:2.0.0" name="AfsendBeskedOutput" type="sd:BasicOutputType" />
+  <element oio:definition="urn:oio:sts:flytbeskedtilfejlkoeinput:ADD:2.0.0" name="FlytBeskedTilFejlkoeInput" type="tns:FlytBeskedTilFejlkoeInputType" />
+  <complexType oio:definition="urn:oio:sts:flytbeskedtilfejlkoeinputtype:ADD:2.0.0" name="FlytBeskedTilFejlkoeInputType">
+    <sequence>
+      <element ref="besked:Haendelsesbesked" />
+    </sequence>
+  </complexType>
+  <element oio:definition="urn:oio:sts:flytbeskedtilfejlkoeoutput:ADD:2.0.0" name="FlytBeskedTilFejlkoeOutput" type="sd:BasicOutputType" />
+</schema>

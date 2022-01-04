@@ -1,0 +1,331 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:t="http://docs.oasis-open.org/ws-sx/ws-trust/200512" xmlns:bf="urn:oio:sts:beskedfordeler:1.0.0" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:tns="urn:dk:kombit:vl:beskedfordeler:wsdl:1.0.0" xmlns:sp="http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:vl="urn:oio:sts:beskedfordeler:vaerdiliste:1.0.0" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" name="BeskedfordelerService" targetNamespace="urn:dk:kombit:vl:beskedfordeler:wsdl:1.0.0" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsp:Policy wsu:Id="ServicePortBindingPolicy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <wsam:Addressing wsp:Optional="false" />
+        <sp:AsymmetricBinding>
+          <wsp:Policy>
+            <sp:InitiatorToken>
+              <wsp:Policy>
+                <sp:IssuedToken sp:IncludeToken="http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702/IncludeToken/AlwaysToRecipient">
+                  <sp:RequestSecurityTokenTemplate>
+                  </sp:RequestSecurityTokenTemplate>
+                  <wsp:Policy>
+                    <sp:RequireInternalReference />
+                  </wsp:Policy>
+                </sp:IssuedToken>
+              </wsp:Policy>
+            </sp:InitiatorToken>
+            <sp:RecipientToken>
+              <wsp:Policy>
+                <sp:X509Token sp:IncludeToken="http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702/IncludeToken/Never">
+                  <wsp:Policy>
+                    <sp:WssX509V3Token10 />
+                    <sp:RequireIssuerSerialReference />
+                  </wsp:Policy>
+                </sp:X509Token>
+              </wsp:Policy>
+            </sp:RecipientToken>
+            <sp:Layout>
+              <wsp:Policy>
+                <sp:Lax />
+              </wsp:Policy>
+            </sp:Layout>
+            <sp:IncludeTimestamp />
+            <sp:ProtectTokens />
+            <sp:OnlySignEntireHeadersAndBody />
+            <sp:AlgorithmSuite>
+              <wsp:Policy>
+                <sp:Basic256 />
+              </wsp:Policy>
+            </sp:AlgorithmSuite>
+          </wsp:Policy>
+        </sp:AsymmetricBinding>
+        <sp:Wss10 xmlns:sp="http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702">
+          <wsp:Policy>
+            <sp:MustSupportRefKeyIdentifier />
+            <sp:MustSupportRefIssuerSerial />
+          </wsp:Policy>
+        </sp:Wss10>
+        <sp:Trust13 xmlns:sp="http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702">
+          <wsp:Policy>
+            <sp:MustSupportIssuedTokens />
+            <sp:RequireClientEntropy />
+            <sp:RequireServerEntropy />
+          </wsp:Policy>
+        </sp:Trust13>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="ServicePortBinding_ping_Input_Policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts>
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="AckRequested" Namespace="http://docs.oasis-open.org/ws-rx/wsrm/200702" />
+          <sp:Header Name="SequenceAcknowledgement" Namespace="http://docs.oasis-open.org/ws-rx/wsrm/200702" />
+          <sp:Header Name="Sequence" Namespace="http://docs.oasis-open.org/ws-rx/wsrm/200702" />
+          <sp:Header Name="CreateSequence" Namespace="http://docs.oasis-open.org/ws-rx/wsrm/200702" />
+          <sp:Header Name="Framework" Namespace="urn:liberty:sb:2006-08" />
+        </sp:SignedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="ServicePortBinding_ping_Output_Policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts>
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="AckRequested" Namespace="http://docs.oasis-open.org/ws-rx/wsrm/200702" />
+          <sp:Header Name="SequenceAcknowledgement" Namespace="http://docs.oasis-open.org/ws-rx/wsrm/200702" />
+          <sp:Header Name="Sequence" Namespace="http://docs.oasis-open.org/ws-rx/wsrm/200702" />
+          <sp:Header Name="CreateSequence" Namespace="http://docs.oasis-open.org/ws-rx/wsrm/200702" />
+          <sp:Header Name="Framework" Namespace="urn:liberty:sb:2006-08" />
+        </sp:SignedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsdl:types>
+    <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <xsd:import schemaLocation="VaerdilisteOperationer.xsd" namespace="urn:oio:sts:beskedfordeler:vaerdiliste:1.0.0" />
+      <xsd:import schemaLocation="BeskedfordelerOperationer.xsd" namespace="urn:oio:sts:beskedfordeler:1.0.0" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="OpretVaerdiListeRequestMessage">
+    <wsdl:part name="request" element="vl:OpretInput" />
+  </wsdl:message>
+  <wsdl:message name="OpretVaerdiListeResponseMessage">
+    <wsdl:part name="response" element="vl:OpretOutput" />
+  </wsdl:message>
+  <wsdl:message name="ImportVaerdiListeRequestMessage">
+    <wsdl:part name="request" element="vl:ImportInput" />
+  </wsdl:message>
+  <wsdl:message name="ImportVaerdiListeResponseMessage">
+    <wsdl:part name="response" element="vl:ImportOutput" />
+  </wsdl:message>
+  <wsdl:message name="RetVaerdiListeRequestMessage">
+    <wsdl:part name="request" element="vl:RetInput" />
+  </wsdl:message>
+  <wsdl:message name="RetVaerdiListeResponseMessage">
+    <wsdl:part name="response" element="vl:RetOutput" />
+  </wsdl:message>
+  <wsdl:message name="LaesVaerdiListeRequestMessage">
+    <wsdl:part name="request" element="vl:LaesInput" />
+  </wsdl:message>
+  <wsdl:message name="LaesVaerdiListeResponseMessage">
+    <wsdl:part name="response" element="vl:LaesOutput" />
+  </wsdl:message>
+  <wsdl:message name="ListVaerdiListeRequestMessage">
+    <wsdl:part name="request" element="vl:ListInput" />
+  </wsdl:message>
+  <wsdl:message name="ListVaerdiListeResponseMessage">
+    <wsdl:part name="response" element="vl:ListOutput" />
+  </wsdl:message>
+  <wsdl:message name="SoegVaerdiListeRequestMessage">
+    <wsdl:part name="request" element="vl:SoegInput" />
+  </wsdl:message>
+  <wsdl:message name="SoegVaerdiListeResponseMessage">
+    <wsdl:part name="response" element="vl:SoegOutput" />
+  </wsdl:message>
+  <wsdl:message name="SletVaerdiListeRequestMessage">
+    <wsdl:part name="request" element="vl:SletInput" />
+  </wsdl:message>
+  <wsdl:message name="SletVaerdiListeResponseMessage">
+    <wsdl:part name="response" element="vl:SletOutput" />
+  </wsdl:message>
+  <wsdl:message name="PassiverVaerdiListeRequestMessage">
+    <wsdl:part name="request" element="vl:PassiverInput" />
+  </wsdl:message>
+  <wsdl:message name="PassiverVaerdiListeResponseMessage">
+    <wsdl:part name="response" element="vl:PassiverOutput" />
+  </wsdl:message>
+  <wsdl:message name="TilfoejVaerdierRequestMessage">
+    <wsdl:part name="request" element="vl:TilfoejVaerdierInput" />
+  </wsdl:message>
+  <wsdl:message name="TilfoejVaerdierResponseMessage">
+    <wsdl:part name="response" element="vl:TilfoejVaerdierOutput" />
+  </wsdl:message>
+  <wsdl:message name="FjernVaerdierRequestMessage">
+    <wsdl:part name="request" element="vl:FjernVaerdierInput" />
+  </wsdl:message>
+  <wsdl:message name="FjernVaerdierResponseMessage">
+    <wsdl:part name="response" element="vl:FjernVaerdierOutput" />
+  </wsdl:message>
+  <wsdl:message name="FlytBeskedTilFejlkoeRequestMessage">
+    <wsdl:part name="request" element="bf:FlytBeskedTilFejlkoeInput" />
+  </wsdl:message>
+  <wsdl:message name="FlytBeskedTilFejlkoeResponseMessage">
+    <wsdl:part name="response" element="bf:FlytBeskedTilFejlkoeOutput" />
+  </wsdl:message>
+  <wsdl:portType name="BeskedfordelerPortType">
+    <wsdl:operation name="opretvaerdiliste">
+      <wsdl:input message="tns:OpretVaerdiListeRequestMessage" />
+      <wsdl:output message="tns:OpretVaerdiListeResponseMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="importvaerdiliste">
+      <wsdl:input message="tns:ImportVaerdiListeRequestMessage" />
+      <wsdl:output message="tns:ImportVaerdiListeResponseMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="retvaerdiliste">
+      <wsdl:input message="tns:RetVaerdiListeRequestMessage" />
+      <wsdl:output message="tns:RetVaerdiListeResponseMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="laesvaerdiliste">
+      <wsdl:input message="tns:LaesVaerdiListeRequestMessage" />
+      <wsdl:output message="tns:LaesVaerdiListeResponseMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="sletvaerdiliste">
+      <wsdl:input message="tns:SletVaerdiListeRequestMessage" />
+      <wsdl:output message="tns:SletVaerdiListeResponseMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="passivervaerdiliste">
+      <wsdl:input message="tns:PassiverVaerdiListeRequestMessage" />
+      <wsdl:output message="tns:PassiverVaerdiListeResponseMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="listvaerdiliste">
+      <wsdl:input message="tns:ListVaerdiListeRequestMessage" />
+      <wsdl:output message="tns:ListVaerdiListeResponseMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="soegvaerdiliste">
+      <wsdl:input message="tns:SoegVaerdiListeRequestMessage" />
+      <wsdl:output message="tns:SoegVaerdiListeResponseMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="tilfoejvaerdier">
+      <wsdl:input message="tns:TilfoejVaerdierRequestMessage" />
+      <wsdl:output message="tns:TilfoejVaerdierResponseMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="fjernvaerdier">
+      <wsdl:input message="tns:FjernVaerdierRequestMessage" />
+      <wsdl:output message="tns:FjernVaerdierResponseMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="flytbeskedtilfejlkoe">
+      <wsdl:input message="tns:FlytBeskedTilFejlkoeRequestMessage" />
+      <wsdl:output message="tns:FlytBeskedTilFejlkoeResponseMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="Beskedfordeler" type="tns:BeskedfordelerPortType">
+    <wsp:PolicyReference URI="#ServicePortBindingPolicy" />
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="opretvaerdiliste">
+      <soap:operation soapAction="http://kombit.dk/sts/beskedfordeler/vaerdiliste/opret" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference URI="#ServicePortBinding_ping_Input_Policy" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+        <wsp:PolicyReference URI="#ServicePortBinding_ping_Output_Policy" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="importvaerdiliste">
+      <soap:operation soapAction="http://kombit.dk/sts/beskedfordeler/vaerdiliste/import" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="retvaerdiliste">
+      <soap:operation soapAction="http://kombit.dk/sts/beskedfordeler/vaerdiliste/ret" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="laesvaerdiliste">
+      <soap:operation soapAction="http://kombit.dk/sts/beskedfordeler/vaerdiliste/laes" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="sletvaerdiliste">
+      <soap:operation soapAction="http://kombit.dk/sts/beskedfordeler/vaerdiliste/slet" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="passivervaerdiliste">
+      <soap:operation soapAction="http://kombit.dk/sts/beskedfordeler/vaerdiliste/passiver" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="soegvaerdiliste">
+      <soap:operation soapAction="http://kombit.dk/sts/beskedfordeler/vaerdiliste/soeg" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="listvaerdiliste">
+      <soap:operation soapAction="http://kombit.dk/sts/beskedfordeler/vaerdiliste/list" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="tilfoejvaerdier">
+      <soap:operation soapAction="http://kombit.dk/sts/beskedfordeler/vaerdiliste/tilfoejvaerdier" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="fjernvaerdier">
+      <soap:operation soapAction="http://kombit.dk/sts/beskedfordeler/vaerdiliste/fjernvaerdier" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="flytbeskedtilfejlkoe">
+      <soap:operation soapAction="http://kombit.dk/sts/beskedfordeler/flytbeskedtilfejlkoe" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Beskedfordeler">
+    <wsdl:port name="stsbeskedfordeler" binding="tns:Beskedfordeler">
+      <soap:address location="http://localhost:8080/sts-bf-soap/Beskedfordeler" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

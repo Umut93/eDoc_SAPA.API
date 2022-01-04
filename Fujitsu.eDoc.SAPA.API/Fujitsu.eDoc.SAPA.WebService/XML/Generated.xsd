@@ -1,0 +1,105 @@
+﻿<xs:schema    
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"  
+    targetNamespace="https://serviceplatformen.dk/xml/wsdl/soap11/DistributionService/3/types"
+    attributeFormDefault="unqualified" 
+    elementFormDefault="qualified">
+  <xs:element name="DistributionContext">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="1" type="xs:string" name="AnvenderTransaktionsID"/>
+        <xs:element type="xs:string" name="DistributionTransktionsID"/>
+        <xs:element type="xs:int" name="AfsendendeMyndighed"/>
+        <xs:element type="xs:int" name="RoutingMyndighed"/>
+        <xs:element name="RoutingValg">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element type="xs:string" name="RoutingModtagerAktoer"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DistributionObject">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element type="xs:string" name="ObjektType"/>
+        <xs:element name="ObjektIndhold">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="DistributionJournalPost">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element type="xs:string" name="ID"/>
+                    <xs:element type="xs:string" name="KLEEmneForslag"/>
+                    <xs:element type="xs:string" name="HandlingFacetForslag"/>
+                    <xs:element type="xs:string" name="SagForslag"/>
+                    <xs:element name="Registrering">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element type="xs:dateTime" name="FraTidsPunkt"/>
+                          <xs:element type="xs:string" name="LivscyklusKode"/>
+                          <xs:element name="BrugerRef">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element type="xs:string" name="UUID"/>
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                          <xs:element name="RegistreringItSystem">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element type="xs:string" name="UUID"/>
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                          <xs:element name="RelationListe">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element name="JournalPost">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element name="Virkning">
+                                        <xs:complexType>
+                                          <xs:sequence>
+                                            <xs:element name="Aktoer">
+                                              <xs:complexType>
+                                                <xs:sequence>
+                                                  <xs:element type="xs:string" name="URN"/>
+                                                </xs:sequence>
+                                              </xs:complexType>
+                                            </xs:element>
+                                            <xs:element type="xs:string" name="AktoerType"/>
+                                          </xs:sequence>
+                                        </xs:complexType>
+                                      </xs:element>
+                                      <xs:element type="xs:string" name="Rolle"/>
+                                      <xs:element type="xs:byte" name="Indeks"/>
+                                      <xs:element name="JournalnotatAttributter">
+                                        <xs:complexType>
+                                          <xs:sequence>
+                                            <xs:element type="xs:string" name="Titel"/>
+                                            <xs:element type="xs:string" name="Notat"/>
+                                          </xs:sequence>
+                                        </xs:complexType>
+                                      </xs:element>
+                                    </xs:sequence>
+                                  </xs:complexType>
+                                </xs:element>
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
